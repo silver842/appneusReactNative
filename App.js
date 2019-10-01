@@ -17,7 +17,9 @@ export default class App extends Component {
   navigatorRenderScene(route, navigator){
     switch (route.id) {
       case 'WelcomePage':
-        return ( <WelcomePage navigator = {navigator} />)
+        return ( <WelcomePage navigator = {navigator} />);
+      case 'ListaFases':
+        return( <ListaFases navigator = {navigator} /> );
     }
   }
   
@@ -26,17 +28,29 @@ export default class App extends Component {
 class WelcomePage extends Component{
   render(){
     return(
-      <View>
+      <View style={Styles.container}>
         <Text>Bem Vindo!</Text>
+        <Text onPress={ () => this.props.navigator.push({id: 'ListaFases'})}>Fases!</Text>
       </View>
     );
   }
 }
 
+class ListaFases extends Component{
+  render(){
+    return(
+      <View>
+        <Text>Jardineira</Text>
+        <Text>Sla oq</Text>
+        <Text>Batata doce</Text>
+      </View>
+    );
+  }
+}
 
 const Styles = StyleSheet.create({
   container: {
     marginTop: 40,
-    marginLeft: 20,
+    alignItems: 'center',
   },
 })
